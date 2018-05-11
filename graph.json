@@ -1,0 +1,19 @@
+{
+	"adjancey": {
+		"1": ["2"],
+		"2": ["3"]
+	},
+	"nodes": {
+		"1": {
+			"q_type": "single",
+			"question": "What type of business are you opening or expanding?",
+			"a_type": "dropdown",
+			"a_choices": ["Bar", "Brewery", "Coffee Shop", "Gym", "Hair Salon", "Restaurant", "Retail"]
+		},
+		"2": {
+			"q_type": "single",
+			"question": "What is your business address?",
+			"a_type": "input"
+		}
+	}
+}
