@@ -4,6 +4,9 @@ import './App.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+// components
+import InputQuestion from './components/InputQuestion';
+
 class App extends Component {
 
   componentDidMount() {
@@ -24,8 +27,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to Upfront Info</h1>
         </header>
         <p className="App-intro">
-          
         </p>
+        <InputQuestion />
       </div>
     );
   }
