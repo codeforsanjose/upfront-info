@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class App extends Component {
+
+  componentDidMount() {
+    axios.get('../graph.json')
+      .then(graph => {
+        
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,4 +31,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { position: state.position };
+}
+
+export default connect(mapStateToProps, null)(App);
