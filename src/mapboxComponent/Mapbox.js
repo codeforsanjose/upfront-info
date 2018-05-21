@@ -4,6 +4,7 @@ import '../cssstyles/mapbox.css';
 import MapboxGl from 'mapbox-gl/dist/mapbox-gl.js'
 
 // let mapboxglKey = process.env.MAPBOX_KEY;
+let mapboxglKey = 'pk.eyJ1IjoiYnZpMTk5NCIsImEiOiJjamg1anZsNzQwejQ1MndvMjB6YXY5NGlxIn0.UDg3M090DtEuTUy_s2NJ_A'
 // Currently trying to figure out how to get the token from process.env
 
 //`Your token goes here`
