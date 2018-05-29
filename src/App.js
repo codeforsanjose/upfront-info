@@ -10,6 +10,7 @@ import DropDownQuestion from './components/DropDownQuestion';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
+import { movePosition } from './actions/positionActions';
 
 class App extends Component {
 
@@ -19,12 +20,14 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const { fetchGraph } = this.props;
     fetchGraph();
   }
 
-  forwardNode(e) {
+  forwardNode(position, e) {
     e.preventDefault();
-    console.log("forwarding node");
+    const { movePosition } = this.props;
+    movePosition(position);
   }
 
   render() {
@@ -66,7 +69,14 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { fetchGraph: dispatch(fetchGraph()) }
+  return { 
+    fetchGraph: () => {
+      dispatch(fetchGraph());
+    },
+    movePosition: pos => {
+      dispatch(movePosition(pos));
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
