@@ -7,7 +7,8 @@ import nodeReducer from './nodeReducer';
 
 const rootReducer = combineReducers({
 	form: formReducer,
-  position: positionReducer
+  position: positionReducer,
+  graph: nodeReducer
 });
 
 export default rootReducer;

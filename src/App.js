@@ -6,20 +6,44 @@ import { connect } from 'react-redux';
 
 // components
 import InputQuestion from './components/InputQuestion';
+import DropDownQuestion from './components/DropDownQuestion';
+
+// actions
+import { fetchGraph } from './actions/graphActions';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.forwardNode = this.forwardNode.bind(this);
+  }
+
   componentDidMount() {
-    axios.get('../graph.json')
-      .then(graph => {
-        
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    fetchGraph();
+  }
+
+  forwardNode(e) {
+    e.preventDefault();
+    console.log("forwarding node");
   }
 
   render() {
+    let { graph, position } = this.props;
+    if (graph.nodes === undefined) { return <div>Loading...</div> }
+
+    let node = graph.nodes[position];
+
+    let questionString = node.question;
+    let answerType = node.a_type;
+    let question;
+
+    if (answerType === 'dropdown') {
+      question = <DropDownQuestion
+        question={ questionString }
+        options={ node.a_choices } 
+        handleSubmit={ this.forwardNode } />;
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -28,14 +52,21 @@ class App extends Component {
         </header>
         <p className="App-intro">
         </p>
-        <InputQuestion />
+        { question }
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { position: state.position };
+  return { 
+    position: state.position,
+    graph: state.graph 
+  };
 }
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = dispatch => {
+  return { fetchGraph: dispatch(fetchGraph()) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

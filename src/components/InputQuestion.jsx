@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 function InputQuestion(props) {
   return (
-    <h1>input question component</h1>
+    <div>
+      <h1>{props.question}</h1>
+      <input type='text' />
+    </div>
   );
 };
 
