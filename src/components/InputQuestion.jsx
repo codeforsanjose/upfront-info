@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-function InputQuestion(props) {
+function InputQuestion({handleSubmit, question}) {
   return (
-    <div>
-      <h1>{props.question}</h1>
-      <input type='text' />
-    </div>
+    <form onSubmit={ handleSubmit }>
+      <h1>{ question }</h1>
+      <Field name="businessAddress" component="input">
+      </Field>
+      <button>Submit</button>
+    </form>    
   );
 };
 
-export default InputQuestion
+export default reduxForm({
+  form: 'wizard', 
+  destroyOnUnmount: false, 
+  forceUnregisterOnUnmount: true
+})(InputQuestion)

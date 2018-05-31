@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 // components
 import InputQuestion from './components/InputQuestion';
 import DropDownQuestion from './components/DropDownQuestion';
+import MapQueryQuestion from './components/MapQueryQuestion';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
@@ -44,7 +45,15 @@ class App extends Component {
       question = <DropDownQuestion
         question={ questionString }
         options={ node.a_choices } 
-        handleSubmit={ this.forwardNode } />;
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+    } else if (answerType === 'input') {
+      question = <InputQuestion
+        question={ questionString }
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+    } else if (answerType === 'mapQuery') {
+      question = <MapQueryQuestion
+        question={ questionString }
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     }
 
     return (
@@ -53,6 +62,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Upfront Info</h1>
         </header>
+        <div id='map-container'
+          style={
+            {
+              'display': 'flex',
+              'flex-align': 'center',
+              'height': '300px'
+            }
+          }
+        ></div>
         <p className="App-intro">
         </p>
         { question }

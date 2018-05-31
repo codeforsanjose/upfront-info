@@ -13,7 +13,7 @@
 		"2": {
 			"q_type": "single",
 			"question": "What is your business address?",
-			"a_type": "input"
+			"a_type": "mapQuery"
 		}
 	}
 }
