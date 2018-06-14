@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
 
 function DropDownQuestion(props) {
   let { question, options, handleSubmit } = props;
@@ -19,5 +19,6 @@ function DropDownQuestion(props) {
 export default reduxForm({
   form: 'wizard', 
   destroyOnUnmount: false, 
+  initialValues: { businessType: "Bar" },
   forceUnregisterOnUnmount: true
 })(DropDownQuestion)

@@ -62,15 +62,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Upfront Info</h1>
         </header>
-        <div id='map-container'
-          style={
-            {
-              'display': 'flex',
-              'flex-align': 'center',
-              'height': '300px'
-            }
-          }
-        ></div>
+
         <p className="App-intro">
         </p>
         { question }
