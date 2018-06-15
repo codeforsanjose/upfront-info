@@ -16,37 +16,30 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYnJ1Y2V3b25nMjEiLCJhIjoiY2poZndkeTR4MWFwOTM2b
 class MapQueryQuestion extends Component {
   constructor(props) {
     super(props);
+    this.renderMap = this.renderMap.bind(this);
   }
 
-  componentDidMount() {
-    console.log("CALLED");
+  renderMap() {
+
     const { 
       setZoningAbbreviation, 
       setZoningDescription,
       changePointCoordinates
     } = this.props;
+
     this.map = new mapboxgl.Map({
       container: 'map-container',
-      style: 'mapbox://styles/brucewong21/cjidy5mj81oe62trq1jt0d131',
+      style: 'style.json',
       center: [-121.8929, 37.3351],
       zoom: 14,
-      maxZoom: 28
+      maxZoom: 24
     });
-
-    this.map.on('mousemove', function (e) {
-        document.getElementById('info').innerHTML =
-            // e.point is the x, y coordinates of the mousemove event relative
-            // to the top-left corner of the map
-            JSON.stringify(e.point) + '<br />' +
-            // e.lngLat is the longitude, latitude geographical position of the event
-            JSON.stringify(e.lngLat);
-    });    
-
+    
     this.geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
+      accessToken: mapboxgl.accessToken
     });
 
-
+    // Bind map event handlers
     this.map.on('load', function() {
         this.map.addSource('single-point', {
             "type": "geojson",
@@ -98,10 +91,15 @@ class MapQueryQuestion extends Component {
     });
     }.bind(this));
 
+    this.geocoder.on('result', function(ev) {
+      this.map.getSource('single-point').setData(ev.result.geometry);
+    }.bind(this));    
 
+    document.getElementById('geocoder-container').appendChild(this.geocoder.onAdd(this.map)); 
+  }
 
-
-    document.getElementById('geocoder-container').appendChild(this.geocoder.onAdd(this.map));
+  componentDidMount() {
+    this.renderMap();
   }
 
   render() {
@@ -125,7 +123,7 @@ class MapQueryQuestion extends Component {
             {
               'display': 'flex',
               'flexAlign': 'center',
-              'height': '300px'
+              'height': '500px'
             }
           }
         ></div>

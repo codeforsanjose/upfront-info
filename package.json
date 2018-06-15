@@ -6,6 +6,7 @@
     "@mapbox/mapbox-gl-geocoder": "^2.2.0",
     "@mapbox/react-geocoder": "^2.5.0",
     "axios": "^0.18.0",
+    "bootstrap": "^4.1.1",
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^0.45.0",
     "prop-types": "^15.6.1",
