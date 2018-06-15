@@ -12,5 +12,24 @@ export const changePointCoordinates = point => {
   } 
 };
 
-export const setZoning
+export const changeCenterCoordinates = center => {
+  return {
+    type: CHANGE_CENTER_COORDINATES,
+    payload: center
+  }
+};
+
+export const setZoningAbbreviation = abbreviation => {
+  return {
+    type: SET_ZONING_ABBREVIATION,
+    payload: abbreviation
+  }
+};
+
+export const setZoningDescription = description => {
+  return {
+    type: SET_ZONING_DESCRIPTION,
+    payload: description
+  }
+};
 

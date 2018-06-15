@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import InputQuestion from './components/InputQuestion';
 import DropDownQuestion from './components/DropDownQuestion';
 import MapQueryQuestion from './components/MapQueryQuestion';
+import ZoningInfoStatement from './components/ZoningInfoStatement';
+import SingleStatement from './components/SingleStatement';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
@@ -38,21 +40,31 @@ class App extends Component {
     let node = graph.nodes[position];
 
     let questionString = node.question;
-    let answerType = node.a_type;
+    let questionType = node.q_type;
     let question;
 
-    if (answerType === 'dropdown') {
+    if (questionType === 'dropdown') {
       question = <DropDownQuestion
         question={ questionString }
         options={ node.a_choices } 
         handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
-    } else if (answerType === 'input') {
+    } else if (questionType === 'input') {
       question = <InputQuestion
         question={ questionString }
         handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
-    } else if (answerType === 'mapQuery') {
+    } else if (questionType === 'mapQuery') {
       question = <MapQueryQuestion
         question={ questionString }
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+    } else if (questionType === 'zoningInfo') {
+      let heading = node.heading;
+      question = <ZoningInfoStatement 
+        heading={ heading }
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+    } else if (questionType === 'singleStatement') {
+      let heading = node.heading;
+      question = <SingleStatement
+        heading={ heading }
         handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     }
 
