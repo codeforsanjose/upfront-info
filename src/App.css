@@ -9,14 +9,36 @@
 }
 
 .App-header {
-  background-color: #222;
   height: 100px;
   padding: 20px;
+  background-color: #19293f;
   color: white;
+  border-bottom: 1px solid #dedede;
+
 }
 
 .App-title {
   font-size: 1.5em;
+}
+
+.card {
+  background: white;
+  border: 1px solid #dedede;
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
+  -webkit-box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
+  -moz-box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
+  margin: 0 0 2em 0;
+}
+
+.card--no-paddding {
+  padding: 0;
+}
+
+.card__body,
+.card__header {
+  padding: 0 25px;
 }
 
 @keyframes App-logo-spin {
@@ -24,8 +46,18 @@
   to { transform: rotate(360deg); }
 }
 
+.container select { 
+  background-color: white;
+}
+
 main {
   padding-top: 2em;
+  height: 100%;
+}
+
+main .button {
+  background: #5bb6e2;
+  border: 0.1rem solid #4ba6d2;
 }
 
 .question-input {

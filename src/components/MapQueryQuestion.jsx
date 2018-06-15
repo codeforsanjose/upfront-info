@@ -110,45 +110,48 @@ class MapQueryQuestion extends Component {
 
     return (
       <div className="address-form">
-        <div className="address-form__field">
-          <h3>{ question }</h3>
-          <div id='geocoder-container'></div>
-        </div>
-        <div className="address-form__map">
-          <div id='map-container'
-          style={
-            {
-              'display': 'flex',
-              'flexAlign': 'center',
-              'height': '300px'
-            }
-          }>
+        <div className="card">
+          <div className="address-form__field">
+            <h3>{ question }</h3>
+            <div id='geocoder-container'></div>
           </div>
         </div>
-        <div className="address-form__results">
-          <table>
-            <thead>
-              <tr>
-                <th>Place</th>
-                <th>Zone Description</th>
-                <th>Zone Abbreviation</th>
-                <th>Address</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{ addressName } </td>
-                <td>{ zoningDescription }</td>
-                <td>{ zoningAbbreviation }</td>
-                <td>{ address }</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="card card--no-paddding">
+          <div id='map-container'
+              style={
+              {
+                'display': 'flex',
+                'flexAlign': 'center',
+                'height': '300px'
+              }
+            }></div>
+          <div className="card__body">
+            <div className="address-form__results">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Place</th>
+                    <th>Zone Description</th>
+                    <th>Zone Abbreviation</th>
+                    <th>Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{ addressName } </td>
+                    <td>{ zoningDescription }</td>
+                    <td>{ zoningAbbreviation }</td>
+                    <td>{ address }</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <form onSubmit={ handleSubmit }>
+            <Field name='businessAddress' component='hidden'></Field>
+            <button>Next</button>
+          </form>
         </div>
-        <form onSubmit={ handleSubmit }>
-          <Field name='businessAddress' component='hidden'></Field>
-          <button>Next</button>
-        </form>
       </div>
     );
   }

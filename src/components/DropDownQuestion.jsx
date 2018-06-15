@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 function DropDownQuestion(props) {
   let { question, options, handleSubmit } = props;
   return (
-    <div>
+    <div className="card">
       <h3>{ question }</h3>
 
       <form className="question-form" onSubmit={ handleSubmit }>

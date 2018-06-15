@@ -75,7 +75,19 @@ class App extends Component {
             <h1>Upfront Info</h1>
           </div>
         </header>
-
+        <section className="progress">
+          <div className="container">
+            <div className="progress__point">
+              <h3>Business Type</h3> 
+            </div>
+            <div className="progress__point">
+              <h3>></h3> 
+            </div>
+            <div className="progress__point">
+              <h3>Location</h3> 
+            </div>
+          </div>
+        </section>
         <main>
           <div className="container">
               { question }
