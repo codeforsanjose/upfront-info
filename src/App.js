@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
-import '../node_modules/milligram/dist/milligram.min.css';
-
 import { connect } from 'react-redux';
 
 // components
