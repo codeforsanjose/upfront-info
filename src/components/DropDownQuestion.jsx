@@ -4,15 +4,18 @@ import { Field, reduxForm } from 'redux-form';
 function DropDownQuestion(props) {
   let { question, options, handleSubmit } = props;
   return (
-    <form onSubmit={ handleSubmit }>
-      <h1>{ question }</h1>
-      <Field name="businessType" component="select">
-        { options.map(opt => {
-          return <option>{opt}</option>
-        }) }      
-      </Field>
-      <button>Submit</button>
-    </form>
+    <div>
+      <h3>{ question }</h3>
+
+      <form className="question-form" onSubmit={ handleSubmit }>
+        <Field className="input input-form" name="businessType" component="select">
+          { options.map(opt => {
+            return <option>{opt}</option>
+          }) }      
+        </Field>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 }
 

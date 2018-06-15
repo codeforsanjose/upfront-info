@@ -7,7 +7,8 @@ import {
   changePointCoordinates,
   changeCenterCoordinates,
   setZoningAbbreviation,
-  setZoningDescription
+  setZoningDescription,
+  setAddress,
 } from '../actions/mapActions';
 var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 
@@ -23,7 +24,8 @@ class MapQueryQuestion extends Component {
     const { 
       setZoningAbbreviation, 
       setZoningDescription,
-      changePointCoordinates
+      changePointCoordinates,
+      setAddress
     } = this.props;
     this.map = new mapboxgl.Map({
       container: 'map-container',
@@ -32,15 +34,6 @@ class MapQueryQuestion extends Component {
       zoom: 14,
       maxZoom: 28
     });
-
-    this.map.on('mousemove', function (e) {
-        document.getElementById('info').innerHTML =
-            // e.point is the x, y coordinates of the mousemove event relative
-            // to the top-left corner of the map
-            JSON.stringify(e.point) + '<br />' +
-            // e.lngLat is the longitude, latitude geographical position of the event
-            JSON.stringify(e.lngLat);
-    });    
 
     this.geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken
@@ -71,8 +64,6 @@ class MapQueryQuestion extends Component {
     }.bind(this));
 
     this.map.on('click', function(e) {
-      console.log("YOU CLICKED THE MAP");
-      console.log(e);
       let { point } = e;
       let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
       let { ZONING, ZONINGABBR } = features[0].properties;
@@ -82,7 +73,10 @@ class MapQueryQuestion extends Component {
 
     this.geocoder.on('result', function(geoCodeEvent) {
       this.map.getSource('single-point').setData(geoCodeEvent.result.geometry);
-      
+      setAddress({
+        address: geoCodeEvent.result.place_name,
+        name: geoCodeEvent.result.text
+      });
       this.map.once('moveend', moveEvent => {
         let lat = geoCodeEvent.result.geometry.coordinates[0];
         let lng = geoCodeEvent.result.geometry.coordinates[1];
@@ -109,29 +103,53 @@ class MapQueryQuestion extends Component {
       handleSubmit, 
       question, 
       zoningDescription,
-      zoningAbbreviation
+      zoningAbbreviation,
+      address,
+      addressName,
     } = this.props;
 
     return (
-      <form onSubmit={ handleSubmit }>
-        <h1>{ question }</h1>
-        <h1>{ zoningDescription }</h1>
-        <h1>{ zoningAbbreviation }</h1>
-        <pre id='info'></pre>
-        <Field name='businessAddress' component='hidden'></Field>
-        <div id='geocoder-container'></div>
-        <div id='map-container'
+      <div className="address-form">
+        <div className="address-form__field">
+          <h3>{ question }</h3>
+          <div id='geocoder-container'></div>
+        </div>
+        <div className="address-form__map">
+          <div id='map-container'
           style={
             {
               'display': 'flex',
               'flexAlign': 'center',
               'height': '300px'
             }
-          }
-        ></div>
-        
-        <button>Submit</button>
-      </form>     
+          }>
+          </div>
+        </div>
+        <div className="address-form__results">
+          <table>
+            <thead>
+              <tr>
+                <th>Place</th>
+                <th>Zone Description</th>
+                <th>Zone Abbreviation</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{ addressName } </td>
+                <td>{ zoningDescription }</td>
+                <td>{ zoningAbbreviation }</td>
+                <td>{ address }</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <form onSubmit={ handleSubmit }>
+          <Field name='businessAddress' component='hidden'></Field>
+          <button>Next</button>
+        </form>
+      </div>
     );
   }
 }
@@ -140,7 +158,9 @@ const mapStateToProps = state => {
   return {
     zoningAbbreviation: state.map.zoningAbbreviation,
     zoningDescription: state.map.zoningDescription,
-    point: state.map.point
+    point: state.map.point,
+    address: state.map.address,
+    addressName: state.map.name
   };
 };
 
@@ -157,7 +177,8 @@ const mapDispatchToProps = dispatch => {
     },
     setZoningAbbreviation: abbr => {
       dispatch(setZoningAbbreviation(abbr));
-    }
+    },
+    setAddress: place => dispatch(setAddress(place))
   };
 };
 

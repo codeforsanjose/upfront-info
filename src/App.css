@@ -10,7 +10,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -19,12 +19,37 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
+main {
+  padding-top: 2em;
+}
+
+.question-input {
+  width: 30%;
+  margin: 0 auto;
+  display: block;
+}
+
+.question-form {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.question-form input,
+.question-form button {
+  width: 100%;
+}
+
+.address-form__field {
+  margin: 0 auto 20px;
+  width: 50%;
+}
+
+.address-form .mapboxgl-ctrl-geocoder {
+  width: 100%;
+  max-width: initial;
+}
