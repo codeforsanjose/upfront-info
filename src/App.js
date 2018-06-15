@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+import '../node_modules/milligram/dist/milligram.min.css';
+
 import { connect } from 'react-redux';
 
 // components
@@ -71,13 +71,28 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Upfront Info</h1>
+          <div className="container">
+            <h1>Upfront Info</h1>
+          </div>
         </header>
-
-        <p className="App-intro">
-        </p>
-        { question }
+        <section className="progress">
+          <div className="container">
+            <div className="progress__point">
+              <h3>Business Type</h3> 
+            </div>
+            <div className="progress__point">
+              <h3>></h3> 
+            </div>
+            <div className="progress__point">
+              <h3>Location</h3> 
+            </div>
+          </div>
+        </section>
+        <main>
+          <div className="container">
+              { question }
+          </div>
+        </main>
       </div>
     );
   }

@@ -9,18 +9,36 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
+  background-color: #19293f;
   color: white;
+  border-bottom: 1px solid #dedede;
+
 }
 
 .App-title {
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.card {
+  background: white;
+  border: 1px solid #dedede;
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
+  -webkit-box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
+  -moz-box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
+  margin: 0 0 2em 0;
+}
+
+.card--no-paddding {
+  padding: 0;
+}
+
+.card__body,
+.card__header {
+  padding: 0 25px;
 }
 
 @keyframes App-logo-spin {
@@ -28,3 +46,42 @@
   to { transform: rotate(360deg); }
 }
 
+.container select { 
+  background-color: white;
+}
+
+main {
+  padding-top: 2em;
+  height: 100%;
+}
+
+main .button {
+  background: #5bb6e2;
+  border: 0.1rem solid #4ba6d2;
+}
+
+.question-input {
+  width: 30%;
+  margin: 0 auto;
+  display: block;
+}
+
+.question-form {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.question-form input,
+.question-form button {
+  width: 100%;
+}
+
+.address-form__field {
+  margin: 0 auto 20px;
+  width: 50%;
+}
+
+.address-form .mapboxgl-ctrl-geocoder {
+  width: 100%;
+  max-width: initial;
+}
