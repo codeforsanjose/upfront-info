@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import mapboxgl from 'mapbox-gl';
 import { connect } from 'react-redux';
-import * as Geocoder from 'react-geocoder-autocomplete';
+// import * as Geocoder from 'react-geocoder-autocomplete';
 import {
   changePointCoordinates,
   changeCenterCoordinates,
@@ -12,8 +12,8 @@ import {
 var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnJ1Y2V3b25nMjEiLCJhIjoiY2poZndkeTR4MWFwOTM2bmdkMmx6Mm4ybyJ9.1H2g7mh2iviU707N3mkJ4Q';
-class MapQueryQuestion extends Component {
 
+class MapQueryQuestion extends Component {
   constructor(props) {
     super(props);
   }
@@ -77,39 +77,40 @@ class MapQueryQuestion extends Component {
       let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
       let { ZONING, ZONINGABBR } = features[0].properties;
       setZoningDescription(ZONING);
-      setZoningAbbreviation(ZONINGABBR);   
-
+      setZoningAbbreviation(ZONINGABBR);
     }.bind(this));
 
-    this.geocoder.on('result', function(ev) {
-      this.map.getSource('single-point').setData(ev.result.geometry);
-      let lat = ev.result.geometry.coordinates[0];
-      let lng = ev.result.geometry.coordinates[1];
-      let latLng = [lat, lng];
-      let point = this.map.project(latLng);
-      changePointCoordinates(point);
-      let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
-      console.log(features);
-      if (features[0] !== undefined) {
-        let { ZONING, ZONINGABBR } = features[0].properties;
-        setZoningDescription(ZONING);
-        setZoningAbbreviation(ZONINGABBR);           
-      }
-    }.bind(this));     
+    this.geocoder.on('result', function(geoCodeEvent) {
+      this.map.getSource('single-point').setData(geoCodeEvent.result.geometry);
+      
+      this.map.once('moveend', moveEvent => {
+        let lat = geoCodeEvent.result.geometry.coordinates[0];
+        let lng = geoCodeEvent.result.geometry.coordinates[1];
+        let latLng = [lat, lng];
+        let point = this.map.project(latLng);
+        changePointCoordinates(point);
+        let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
+        if (features[0]) {
+          let { ZONING, ZONINGABBR } = features[0].properties;
+          setZoningDescription(ZONING);
+          setZoningAbbreviation(ZONINGABBR);
+        }
+    });
+    }.bind(this));
+
+
 
 
     document.getElementById('geocoder-container').appendChild(this.geocoder.onAdd(this.map));
   }
 
   render() {
-    console.log("RERENDERING");
     const { 
       handleSubmit, 
       question, 
       zoningDescription,
       zoningAbbreviation
     } = this.props;
-    console.log(this.props);
 
     return (
       <form onSubmit={ handleSubmit }>
