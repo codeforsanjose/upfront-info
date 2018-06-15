@@ -6,12 +6,12 @@ function DropDownQuestion(props) {
   return (
     <form onSubmit={ handleSubmit }>
       <h1>{ question }</h1>
-      <Field name="businessType" component="select">
+      <Field name="businessType" component="select" className="custom-select">
         { options.map(opt => {
           return <option>{opt}</option>
         }) }      
       </Field>
-      <button>Submit</button>
+      <button className="btn btn-outline-primary">Submit</button>
     </form>
   );
 }

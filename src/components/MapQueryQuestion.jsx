@@ -16,93 +16,74 @@ class MapQueryQuestion extends Component {
 
   constructor(props) {
     super(props);
+    this.renderMap = this.renderMap.bind(this);
   }
 
-  componentDidMount() {
-    console.log("CALLED");
+  renderMap() {
+
     const { 
       setZoningAbbreviation, 
       setZoningDescription,
       changePointCoordinates
     } = this.props;
+
     this.map = new mapboxgl.Map({
       container: 'map-container',
-      style: 'mapbox://styles/brucewong21/cjidy5mj81oe62trq1jt0d131',
+      style: 'style.json',
       center: [-121.8929, 37.3351],
       zoom: 14,
-      maxZoom: 28
+      maxZoom: 24
     });
 
-    this.map.on('mousemove', function (e) {
-        document.getElementById('info').innerHTML =
-            // e.point is the x, y coordinates of the mousemove event relative
-            // to the top-left corner of the map
-            JSON.stringify(e.point) + '<br />' +
-            // e.lngLat is the longitude, latitude geographical position of the event
-            JSON.stringify(e.lngLat);
-    });    
-
-    this.geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-    });
-
-
+    // Bind map event handlers
     this.map.on('load', function() {
-        this.map.addSource('single-point', {
-            "type": "geojson",
-            "data": {
-                "type": "FeatureCollection",
-                "features": []
-            }
-        });
+      this.map.addSource('single-point', {
+          "type": "geojson",
+          "data": {
+              "type": "FeatureCollection",
+              "features": []
+          }
+      });
 
-        this.map.addLayer({
-            "id": "point",
-            "source": "single-point",
-            "type": "circle",
-            "paint": {
-                "circle-radius": 10,
-                "circle-color": "#007cbf"
-            }
-        });
+      this.map.addLayer({
+          "id": "point",
+          "source": "single-point",
+          "type": "circle",
+          "paint": {
+              "circle-radius": 6,
+              "circle-color": "#007cbf"
+          }
+      });
+    }.bind(this));    
 
-        // Listen for the `geocoder.input` event that is triggered when a user
-        // makes a selection and add a symbol that matches the result.   
-    }.bind(this));
-
-    this.map.on('click', function(e) {
-      console.log("YOU CLICKED THE MAP");
-      console.log(e);
-      let { point } = e;
-      let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
-      let { ZONING, ZONINGABBR } = features[0].properties;
-      setZoningDescription(ZONING);
-      setZoningAbbreviation(ZONINGABBR);   
-
-    }.bind(this));
-
-    this.geocoder.on('result', function(ev) {
-      this.map.getSource('single-point').setData(ev.result.geometry);
-      let lat = ev.result.geometry.coordinates[0];
-      let lng = ev.result.geometry.coordinates[1];
-      let latLng = [lat, lng];
+    this.map.on('moveend', function(e) {
+      const { lng, lat } = e.target.transform._center;
+      let latLng = [lng, lat];
       let point = this.map.project(latLng);
-      changePointCoordinates(point);
       let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
-      console.log(features);
       if (features[0] !== undefined) {
         let { ZONING, ZONINGABBR } = features[0].properties;
         setZoningDescription(ZONING);
         setZoningAbbreviation(ZONINGABBR);           
-      }
-    }.bind(this));     
+      }      
+    }.bind(this));
 
+    this.geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken
+    });
 
-    document.getElementById('geocoder-container').appendChild(this.geocoder.onAdd(this.map));
+    this.geocoder.on('result', function(ev) {
+      this.map.getSource('single-point').setData(ev.result.geometry);
+    }.bind(this));    
+
+    document.getElementById('geocoder-container').appendChild(this.geocoder.onAdd(this.map)); 
+  }
+
+  componentDidMount() {
+    this.renderMap();
   }
 
   render() {
-    console.log("RERENDERING");
     const { 
       handleSubmit, 
       question, 
@@ -124,7 +105,7 @@ class MapQueryQuestion extends Component {
             {
               'display': 'flex',
               'flexAlign': 'center',
-              'height': '300px'
+              'height': '500px'
             }
           }
         ></div>
