@@ -2,6 +2,7 @@
   "name": "upfront-info-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://celestecomet.github.io/upfront-info",
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^2.2.0",
     "@mapbox/react-geocoder": "^2.5.0",
@@ -24,10 +25,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "create-react-class": "^15.6.3",
+    "gh-pages": "^1.2.0",
     "redux-devtools-extension": "^2.13.2"
   }
 }

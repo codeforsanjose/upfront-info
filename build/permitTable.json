@@ -1,0 +1,40 @@
+// we want fast lookup 
+
+{
+  "drinking establishment": {
+    "CO": null,
+    "CP": "C",
+    "CN": "C",
+    "CG": "C",
+    "PQP": null
+  },
+  "wineries/breweries": {
+    "CO": null,
+    "CP": "C",
+    "CN": "C",
+    "CG": "C",
+    "PQP": null,
+    "DC": "C",
+    "DC-NT1": "C",
+    "CIC": "P",
+    "TEC": "P",
+    "IP": "P",
+    "LI": "P",
+    "HI": "P"
+  }, 
+  "food berverage groceries": {
+    
+  },
+  "recreation commerical indoor": {
+
+  },
+  "personal service": {
+
+  },
+  "public eating establishment": {
+
+  },
+  "retail sales": {
+
+  }
+}
