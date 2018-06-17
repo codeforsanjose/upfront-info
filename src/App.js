@@ -7,6 +7,7 @@ import DropDownQuestion from './components/DropDownQuestion';
 import MapQueryQuestion from './components/MapQueryQuestion';
 import ZoningInfoStatement from './components/ZoningInfoStatement';
 import SingleStatement from './components/SingleStatement';
+import ZoningLookupStatement from './components/ZoningLookupStatement';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
@@ -61,6 +62,11 @@ class App extends Component {
     } else if (questionType === 'singleStatement') {
       let heading = node.heading;
       question = <SingleStatement
+        heading={ heading }
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+    } else if (questionType === 'lookupStatement') {
+      let heading = node.heading;
+      question = <ZoningLookupStatement 
         heading={ heading }
         handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     }

@@ -9,8 +9,8 @@ function DropDownQuestion(props) {
 
       <form className="question-form" onSubmit={ handleSubmit }>
         <Field className="input input-form" name="businessType" component="select">
-          { options.map(opt => {
-            return <option>{opt}</option>
+          { options.map((opt, i) => {
+            return <option key={i}>{opt}</option>
           }) }      
         </Field>
         <button>Submit</button>

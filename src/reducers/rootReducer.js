@@ -5,12 +5,14 @@ import { combineReducers } from 'redux';
 import positionReducer from './positionReducer';
 import nodeReducer from './nodeReducer';
 import mapReducer from './mapReducer';
+import lookupTableReducer from './lookupTableReducer';
 
 const rootReducer = combineReducers({
 	form: formReducer,
   position: positionReducer,
   graph: nodeReducer,
-  map: mapReducer
+  map: mapReducer,
+  lookup: lookupTableReducer
 });
 
 export default rootReducer;
