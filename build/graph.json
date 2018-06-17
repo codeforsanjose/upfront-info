@@ -1,0 +1,30 @@
+{
+	"adjancey": {
+		"1": ["2"],
+		"2": ["3"],
+		"3": ["4"],
+		"4": ["5"]
+	},
+	"nodes": {
+		"1": {
+			"q_type": "dropdown",
+			"question": "What type of business are you opening or expanding?",
+			"a_type": "dropdown",
+			"a_choices": ["Bar", "Brewery", "Coffee Shop", "Gym", "Hair Salon", "Restaurant", "Retail"]
+		},
+		"2": {
+			"q_type": "mapQuery",
+			"question": "What is your business address?",
+			"a_type": "mapQuery"
+		},
+		"3": {
+			"q_type": "zoningInfo",
+			"heading": "Here is your business information:"
+		},
+		"4": {
+			"q_type": "singleStatement",
+			"heading": "OK, let me check if your business is permitted"
+		}
+
+	}
+}
