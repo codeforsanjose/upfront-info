@@ -113,6 +113,8 @@ class MapQueryQuestion extends Component {
       zoningAbbreviation,
       address,
       addressName,
+      position, 
+      forwardPositions
     } = this.props;
 
     return (
@@ -154,7 +156,7 @@ class MapQueryQuestion extends Component {
               </table>
             </div>
           </div>
-          <form onSubmit={ handleSubmit }>
+          <form onSubmit={(e) => {handleSubmit(forwardPositions[0], e)}}>
             <Field name='businessAddress' component='hidden'></Field>
             <button>Next</button>
           </form>
@@ -170,7 +172,9 @@ const mapStateToProps = state => {
     zoningDescription: state.map.zoningDescription,
     point: state.map.point,
     address: state.map.address,
-    addressName: state.map.name
+    addressName: state.map.name, 
+    position: state.position,
+    forwardPositions: state.graph.adjancey[state.position]
   };
 };
 

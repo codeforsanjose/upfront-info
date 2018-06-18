@@ -4,7 +4,13 @@
 		"2": ["3"],
 		"3": ["4"],
 		"4": ["5"],
-		"5": ["6"]
+		"5": ["6", "7", "8", "9", "10"],
+		"6": ["11"],
+		"7": ["11"],
+		"8": ["11"],
+		"9": ["11"],
+		"10": ["11"],
+		"11": ["1"]
 	},
 	"nodes": {
 		"1": {
@@ -20,16 +26,39 @@
 		},
 		"3": {
 			"q_type": "zoningInfo",
-			"heading": "Here is your business information:"
+			"question": "Here is your business information:"
 		},
 		"4": {
 			"q_type": "singleStatement",
-			"heading": "OK, let me check if your business is permitted"
+			"question": "OK, let me check if your business is permitted"
 		},
 		"5": {
 			"q_type": "lookupStatement",
-			"heading": "Here is the information about your business"
-		}
-
+			"question": "Here is the information about your business"
+		},
+		"6": {
+			"q_type": "singleStatement",
+			"question": "Sorry, your use is not allowed in this Zoning District"
+		},
+		"7": {
+			"q_type": "singleStatement",
+			"question": "Since your site is in Planned Development Zoning (PD), you will need to visit the Planning Counter"
+		},				
+		"8": {
+			"q_type": "singleStatement",
+			"question": "A SUP or CUP is required, you will need to visit the Planning Counter first"
+		},
+		"9": {
+			"q_type": "singleStatement",
+			"question": "Good news! Based on our zoning code, a #{businessType} is generally allowed at #{address}."
+		},
+		"10": {
+			"q_type": "singleStatement",
+			"question": "Sorry, your use is not allowed in this Zoning District"
+		},
+		"11": {
+			"q_type": "singleStatement",
+			"question": "Development and styling will continue!"
+		}			
 	}
 }
