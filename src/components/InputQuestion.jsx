@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-function InputQuestion({handleSubmit, question, position}) {
+function InputQuestion({handleSubmit, question, position, forwardPositions}) {
   return (
-    <form onSubmit={(e) => {handleSubmit(position + 1, e)}}>
+    <form onSubmit={(e) => {handleSubmit(forwardPositions[0], e)}}>
       <h1>{ question }</h1>
       <Field name="businessAddress" component="input">
       </Field>
@@ -15,7 +15,8 @@ function InputQuestion({handleSubmit, question, position}) {
 
 const mapStateToProps = state => {
   return {
-    position: state.position
+    position: state.position,
+    forwardPositions: state.graph.adjancey[state.position]
   };
 };
 

@@ -26,7 +26,6 @@ const mapReducer = (state = initialState, action) => {
         newState.zoningDescription = action.payload;
         return newState;
       case SET_ADDRESS:
-      console.log('set address', action);
         newState.address = action.payload.address;
         newState.name = action.payload.name;
         return newState;

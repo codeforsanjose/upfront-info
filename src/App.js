@@ -26,9 +26,7 @@ class App extends Component {
   }
 
   forwardNode(position, e) {
-    if (e !== undefined) {
-      e.preventDefault();
-    }
+    if (e !== undefined) { e.preventDefault(); }
     const { movePosition } = this.props;
     movePosition(position);
   }
