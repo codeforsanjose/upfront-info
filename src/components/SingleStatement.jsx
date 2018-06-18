@@ -3,9 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 
-function SingleStatement({handleSubmit, heading}) {
+function SingleStatement({handleSubmit, heading, position}) {
   return (
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={(e) => {handleSubmit(position + 1, e)}}>
       <h1>{ heading }</h1>
       <button>Submit</button>
     </form>    
@@ -14,7 +14,7 @@ function SingleStatement({handleSubmit, heading}) {
 
 const mapStateToProps = state => {
   return {
-    state
+    position: state.position 
   }
 };
 
@@ -31,4 +31,4 @@ export default reduxForm({
   form: 'wizard', 
   destroyOnUnmount: false, 
   forceUnregisterOnUnmount: true
-})(SingleStatement);
+})(connectedSingleStatement);
