@@ -16,5 +16,3 @@ Next, the tool asks the user a series of questions about the scope of constructi
 
 For questions, please contact Michelle Thong, San Jose Office of Civic Innovation at michelle.thong@sanjoseca.gov. 
 
-
-

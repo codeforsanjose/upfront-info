@@ -8,10 +8,12 @@ import MapQueryQuestion from './components/MapQueryQuestion';
 import ZoningInfoStatement from './components/ZoningInfoStatement';
 import SingleStatement from './components/SingleStatement';
 import ZoningLookupStatement from './components/ZoningLookupStatement';
+import YesNoQuestion from './components/YesNoQuestion';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
 import { movePosition } from './actions/positionActions';
+
 
 class App extends Component {
 
@@ -73,6 +75,12 @@ class App extends Component {
         }} />
     } else if (questionType === 'lookupStatement') {
       question = <ZoningLookupStatement 
+        heading={ questionString }
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />
+    } else if (questionType === 'yesNoQuestion') {
+      question = <YesNoQuestion
         heading={ questionString }
         handleSubmit={(node, e) => {
           this.forwardNode(node, e);
