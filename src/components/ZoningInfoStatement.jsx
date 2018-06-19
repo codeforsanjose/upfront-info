@@ -3,9 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 
-function ZoningInfoStatement({handleSubmit, heading, zoningAbbreviation, zoningDescription}) {
+function ZoningInfoStatement({handleSubmit, heading, zoningAbbreviation, zoningDescription, position, forwardPositions}) {
   return (
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={(e) => {handleSubmit(forwardPositions[0], e)}}>
       <h1>{ heading }</h1>
       <h2>Your zoning code is { zoningAbbreviation }</h2>
       <h2>which means { zoningDescription }</h2>
@@ -17,7 +17,9 @@ function ZoningInfoStatement({handleSubmit, heading, zoningAbbreviation, zoningD
 const mapStateToProps = state => {
   return {
     zoningAbbreviation: state.map.zoningAbbreviation,
-    zoningDescription: state.map.zoningDescription 
+    zoningDescription: state.map.zoningDescription,
+    position: state.position,
+    forwardPositions: state.graph.adjancey[state.position]
   }
 };
 

@@ -7,6 +7,7 @@ import DropDownQuestion from './components/DropDownQuestion';
 import MapQueryQuestion from './components/MapQueryQuestion';
 import ZoningInfoStatement from './components/ZoningInfoStatement';
 import SingleStatement from './components/SingleStatement';
+import ZoningLookupStatement from './components/ZoningLookupStatement';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
@@ -25,7 +26,7 @@ class App extends Component {
   }
 
   forwardNode(position, e) {
-    e.preventDefault();
+    if (e !== undefined) { e.preventDefault(); }
     const { movePosition } = this.props;
     movePosition(position);
   }
@@ -35,7 +36,6 @@ class App extends Component {
     if (graph.nodes === undefined) { return <div>Loading...</div> }
 
     let node = graph.nodes[position];
-
     let questionString = node.question;
     let questionType = node.q_type;
     let question;
@@ -44,25 +44,39 @@ class App extends Component {
       question = <DropDownQuestion
         question={ questionString }
         options={ node.a_choices } 
-        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />        
     } else if (questionType === 'input') {
       question = <InputQuestion
         question={ questionString }
-        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />        
     } else if (questionType === 'mapQuery') {
       question = <MapQueryQuestion
         question={ questionString }
-        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />        
     } else if (questionType === 'zoningInfo') {
-      let heading = node.heading;
       question = <ZoningInfoStatement 
-        heading={ heading }
-        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+        heading={ questionString }
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />        
     } else if (questionType === 'singleStatement') {
-      let heading = node.heading;
       question = <SingleStatement
-        heading={ heading }
-        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
+        heading={ questionString }
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />
+    } else if (questionType === 'lookupStatement') {
+      question = <ZoningLookupStatement 
+        heading={ questionString }
+        handleSubmit={(node, e) => {
+          this.forwardNode(node, e);
+        }} />
     }
 
     return (

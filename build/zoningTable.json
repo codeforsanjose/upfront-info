@@ -1,0 +1,9 @@
+{
+  "bar": "drinking establishment",
+  "brewery": "wineries/breweries",
+  "coffee shop": "food berverage groceries",
+  "gym": "recreation commerical indoor",
+  "hair salon": "personal service",
+  "restaurant": "public eating establishment",
+  "retail": "retail sales"
+}

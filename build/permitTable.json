@@ -1,0 +1,77 @@
+{
+  "drinking establishment": {
+    "CO": null,
+    "CP": "C",
+    "CN": "C",
+    "CG": "C",
+    "PQP": null
+  },
+  "wineries/breweries": {
+    "CO": null,
+    "CP": "C",
+    "CN": "C",
+    "CG": "C",
+    "PQP": null,
+    "DC": "C",
+    "DC-NT1": "C",
+    "CIC": "P",
+    "TEC": "P",
+    "IP": "P",
+    "LI": "P",
+    "HI": "P"
+  }, 
+  "food berverage groceries": {
+    "CP": "P",
+    "CN": "P",
+    "CG": "P",
+    "PQP": "S",
+    "DC": "P",
+    "DC-NT1": "P",
+    "CIC": "P",
+    "TEC": "P" 
+  },
+  "recreation commerical indoor": {
+    "CP": "P",
+    "CN": "P",
+    "CG": "P",
+    "DC": "P",
+    "DC-NT1": "P",
+    "CIC": "P",
+    "IP": "CGP",
+    "LI": "CGP"
+  },
+  "personal service": {
+    "CP": "P",
+    "CN": "P",
+    "CG": "P", 
+    "PQP": "S",
+    "DC": "P",
+    "DC-NT1": "P",
+    "CIC": "P",
+    "TEC": "P"               
+  },
+  "public eating establishment": {
+    "CO": null,
+    "CP": "P",
+    "CN": "P",
+    "CG": "P",
+    "PQP": null,
+    "DC": "P",
+    "DC-NT1": "P",
+    "CIC": "P",
+    "TEC": "P",
+    "IP": null,
+    "LI": "C",
+    "HI": "C"
+  },
+  "retail sales": {
+    "CP": "P",
+    "CN": "P",
+    "CG": "P",
+    "DC": "P",
+    "DC-NT1": "P",
+    "CIC": "P",
+    "TEC": "P"    
+
+  }
+}
