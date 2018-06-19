@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import './App.css';
+import '../node_modules/milligram/dist/milligram.min.css';
+
 import { connect } from 'react-redux';
 
 // components
@@ -38,6 +41,7 @@ class App extends Component {
     if (graph.nodes === undefined) { return <div>Loading...</div> }
 
     let node = graph.nodes[position];
+
     let questionString = node.question;
     let questionType = node.q_type;
     let question;
@@ -46,28 +50,22 @@ class App extends Component {
       question = <DropDownQuestion
         question={ questionString }
         options={ node.a_choices } 
-        handleSubmit={(node, e) => {
-          this.forwardNode(node, e);
-        }} />        
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     } else if (questionType === 'input') {
       question = <InputQuestion
         question={ questionString }
-        handleSubmit={(node, e) => {
-          this.forwardNode(node, e);
-        }} />        
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     } else if (questionType === 'mapQuery') {
       question = <MapQueryQuestion
         question={ questionString }
-        handleSubmit={(node, e) => {
-          this.forwardNode(node, e);
-        }} />        
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     } else if (questionType === 'zoningInfo') {
+      let heading = node.heading;
       question = <ZoningInfoStatement 
-        heading={ questionString }
-        handleSubmit={(node, e) => {
-          this.forwardNode(node, e);
-        }} />        
+        heading={ heading }
+        handleSubmit={ this.forwardNode.bind(null, graph.adjancey[position][0]) } />;
     } else if (questionType === 'singleStatement') {
+      let heading = node.heading;
       question = <SingleStatement
         heading={ questionString }
         handleSubmit={(node, e) => {
@@ -91,13 +89,13 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className="container">
-            <h1>Upfront Info</h1>
+            <h1>UpFront</h1>
           </div>
         </header>
         <section className="progress">
           <div className="container">
             <div className="progress__point">
-              <h3>Business Type</h3> 
+              <h3 className="progress__point--active">Business Type</h3> 
             </div>
             <div className="progress__point">
               <h3>></h3> 
