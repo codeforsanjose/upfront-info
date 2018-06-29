@@ -1,9 +1,17 @@
 {
 	"adjancey": {
 		"1": ["2"],
-		"2": ["3"],
+		"2": ["5"],
 		"3": ["4"],
-		"4": ["5"]
+		"4": ["5"],
+		"5": ["6", "7", "8", "9", "10"],
+		"6": ["11"],
+		"7": ["11"],
+		"8": ["11"],
+		"9": ["12"],
+		"10": ["11"],
+		"11": ["1"],
+		"12": ["13", "14", "15"]
 	},
 	"nodes": {
 		"1": {
@@ -19,12 +27,56 @@
 		},
 		"3": {
 			"q_type": "zoningInfo",
-			"heading": "Here is your business information:"
+			"question": "Here is your business information:"
 		},
 		"4": {
 			"q_type": "singleStatement",
-			"heading": "OK, let me check if your business is permitted"
-		}
-
+			"question": "OK, let me check if your business is permitted"
+		},
+		"5": {
+			"q_type": "lookupStatement",
+			"question": "Here is the information about your business"
+		},
+		"6": {
+			"q_type": "singleStatement",
+			"question": "Sorry, your use is not allowed in this Zoning District"
+		},
+		"7": {
+			"q_type": "singleStatement",
+			"question": "Since your site is in Planned Development Zoning (PD), you will need to visit the Planning Counter"
+		},
+		"8": {
+			"q_type": "singleStatement",
+			"question": "A SUP or CUP is required, you will need to visit the Planning Counter first"
+		},
+		"9": {
+			"q_type": "singleStatement",
+			"question": "Good news! Based on our zoning code, a #{businessType} is generally allowed at #{address}."
+		},
+		"10": {
+			"q_type": "singleStatement",
+			"question": "Sorry, your use is not allowed in this Zoning District"
+		},
+		"11": {
+			"q_type": "singleStatement",
+			"question": "Development and styling will continue!"
+		},
+		"12": {
+			"q_type": "yesNoQuestion",
+			"q_label": "wall-dividing-spaces",
+			"question": "Will you be doing any changes on the interior of the building, such as creating new walls or dividing spaces?"
+		},
+		"13": {
+			"q_type": "singleStatement",
+			"question": "Youre at 13"			
+		},
+		"14": {
+			"q_type": "singleStatement",
+			"question": "Youre at 14"			
+		},
+		"15": {
+			"q_type": "singleStatement",
+			"question": "Youre at 15"			
+		}				
 	}
 }
