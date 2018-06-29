@@ -98,7 +98,7 @@ class App extends Component {
         </header>
         <section className="progress">
           <div className="container">
-            <div className="progress__point">
+            <div className="progress__point progress__point progress__point--active">
               <h3>Business Type</h3> 
             </div>
             <div className="progress__point">

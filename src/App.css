@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+.App p {
+  font-size: 20px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -11,10 +15,14 @@
 .App-header {
   height: 100px;
   padding: 20px;
-  background-color: #19293f;
+  background-color: #0376be;
   color: white;
   border-bottom: 1px solid #dedede;
+}
 
+.App-header h1 {
+  color: #80c4f1;
+  font-weight: 600;
 }
 
 .App-title {
@@ -24,12 +32,19 @@
 .card {
   background: white;
   border: 1px solid #dedede;
-  padding: 25px;
+  padding: 22px 28px;
   border-radius: 6px;
   box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
   -webkit-box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
   -moz-box-shadow: 1px 4px 8px rgba(166, 166, 166, 0.2);
   margin: 0 0 2em 0;
+}
+
+.card h3 {
+  font-weight: 500;
+  text-align: left;
+  border-bottom: 1px solid #d0d0d0;
+  padding-bottom: 18px;
 }
 
 .card--no-paddding {
@@ -78,10 +93,36 @@ main .button {
 
 .address-form__field {
   margin: 0 auto 20px;
-  width: 50%;
+  width: 100%;
 }
 
 .address-form .mapboxgl-ctrl-geocoder {
   width: 100%;
   max-width: initial;
+}
+
+.App button {
+  background-color: #4d96ca;
+  border: 0.1rem solid #4d90ca;
+}
+
+.App select:focus {
+  border-color: #9c9c9c;
+  background-image: url(data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14"…h fill="#9b4dca" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>);
+}
+.mapboxgl-ctrl-geocoder input[type='text'] {
+  height: 50px !important;
+  font-size: 16px;
+}
+
+.results__main {
+  text-align: left;
+}
+
+.results__main .card {
+  height: 100%;
+}
+
+.results__main button {
+  margin-top: 25px;
 }

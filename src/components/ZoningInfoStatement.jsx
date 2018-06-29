@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-
 function ZoningInfoStatement({handleSubmit, heading, zoningAbbreviation, zoningDescription, position, forwardPositions}) {
   return (
-    <form onSubmit={(e) => {handleSubmit(forwardPositions[0], e)}}>
-      <h1>{ heading }</h1>
+    <div className="card">
+      <h3>{ heading }</h3>
       <h2>Your zoning code is { zoningAbbreviation }</h2>
       <h2>which means { zoningDescription }</h2>
-      <button>Submit</button>
-    </form>    
+    </div>
   );
 };
 
