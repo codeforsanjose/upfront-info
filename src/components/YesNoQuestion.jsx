@@ -2,13 +2,49 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-function YesNoQuestion({handleSubmit, question, position, forwardPositions}) {
+class YesNoButtons extends Component {
+
+  constructor(props) {
+    super(props);
+    this.setValue = this.setValue.bind(this);
+  }
+
+  setValue(yesNoValue) {
+    const { input: { value, onChange}, forwardPositions, handleSubmit } = this.props;
+    onChange(yesNoValue);
+
+    const yesNoMap = {
+      "yes": 0,
+      "no": 1,
+      "na": 2
+    };
+
+    const positionToMoveTo = yesNoMap[yesNoValue]
+    handleSubmit(forwardPositions[positionToMoveTo]);
+  }
+
+  render() {
+    const { input: { value, onChange } } = this.props
+    return (
+      <form className="yes-no-buttons">
+        <button type="button" onClick={() => { this.setValue("yes") }}>Yes</button>
+        <button type="button" onClick={() => { this.setValue("no")  }}>No</button>
+        <button type="button" onClick={() => { this.setValue("na")  }}>Don't Know</button>
+      </form>
+    )
+  }
+}
+
+function YesNoQuestion({handleSubmit, question, position, forwardPositions, label}) {
   return (
-    <form>
+    <div>
       <h1>{ question }</h1>
-      <button onClick={(e) => {handleSubmit(forwardPositions[0]), e}}>Yes</button>
-      <button onClick={(e) => {handleSubmit(forwardPositions[0]), e}}>No</button>
-    </form>    
+      <Field 
+        component={ YesNoButtons } 
+        name={ label }
+        forwardPositions={ forwardPositions } 
+        handleSubmit={ handleSubmit } />
+    </div>
   );
 };
 

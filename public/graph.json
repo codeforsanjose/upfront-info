@@ -11,7 +11,7 @@
 		"9": ["12"],
 		"10": ["11"],
 		"11": ["1"],
-		"12": ["13"]
+		"12": ["13", "14", "15"]
 	},
 	"nodes": {
 		"1": {
@@ -63,7 +63,20 @@
 		},
 		"12": {
 			"q_type": "yesNoQuestion",
-			"question": ""
-		}
+			"q_label": "wall-dividing-spaces",
+			"question": "Will you be doing any changes on the interior of the building, such as creating new walls or dividing spaces?"
+		},
+		"13": {
+			"q_type": "singleStatement",
+			"question": "Youre at 13"			
+		},
+		"14": {
+			"q_type": "singleStatement",
+			"question": "Youre at 14"			
+		},
+		"15": {
+			"q_type": "singleStatement",
+			"question": "Youre at 15"			
+		}				
 	}
 }

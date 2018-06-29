@@ -40,7 +40,7 @@ class ZoningLookupStatement extends Component {
     switch(permitAbbreviation) {
       
       case null:
-        handleSubmit(forwardPositions[0]);
+        handleSubmit(fobns[0]);
         //return <h1>Sorry, your use is not allowed in this Zoning District</h1>
         break;
       case 'PD':

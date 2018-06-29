@@ -80,8 +80,10 @@ class App extends Component {
           this.forwardNode(node, e);
         }} />
     } else if (questionType === 'yesNoQuestion') {
+      let label = node.q_label;
       question = <YesNoQuestion
         heading={ questionString }
+        label={ label }
         handleSubmit={(node, e) => {
           this.forwardNode(node, e);
         }} />

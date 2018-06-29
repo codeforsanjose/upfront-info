@@ -68,6 +68,7 @@ class MapQueryQuestion extends Component {
     this.map.on('click', function(e) {
       let { point } = e;
       let features = this.map.queryRenderedFeatures(point, { layers: ['zoning-201804191549049432-8zfao8'] });
+      if (features.length === 0) { return; }
       let { ZONING, ZONINGABBR } = features[0].properties;
       setZoningDescription(ZONING);
       setZoningAbbreviation(ZONINGABBR);
