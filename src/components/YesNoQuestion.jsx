@@ -10,6 +10,7 @@ class YesNoButtons extends Component {
   }
 
   setValue(yesNoValue) {
+    const { position } = this.props;
     const { input: { value, onChange}, forwardPositions, handleSubmit } = this.props;
     onChange(yesNoValue);
 
@@ -19,7 +20,7 @@ class YesNoButtons extends Component {
       "na": 2
     };
 
-    const positionToMoveTo = yesNoMap[yesNoValue]
+    const positionToMoveTo = yesNoMap[yesNoValue];
     handleSubmit(forwardPositions[positionToMoveTo]);
   }
 
@@ -35,10 +36,10 @@ class YesNoButtons extends Component {
   }
 }
 
-function YesNoQuestion({handleSubmit, question, position, forwardPositions, label}) {
+function YesNoQuestion({handleSubmit, heading, position, forwardPositions, label}) {
   return (
     <div>
-      <h1>{ question }</h1>
+      <h1>{ heading }</h1>
       <Field 
         component={ YesNoButtons } 
         name={ label }
