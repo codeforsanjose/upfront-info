@@ -12,14 +12,14 @@ import YesNoQuestion from './components/YesNoQuestion';
 
 // actions
 import { fetchGraph } from './actions/graphActions';
-import { movePosition } from './actions/positionActions';
-
+import { movePosition, backPosition } from './actions/positionActions';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.forwardNode = this.forwardNode.bind(this);
+    this.backNode = this.backNode.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +31,10 @@ class App extends Component {
     if (e !== undefined) { e.preventDefault(); }
     const { movePosition } = this.props;
     movePosition(position);
+  }
+
+  backNode() {
+    this.props.backPosition();
   }
 
   render() {
@@ -121,7 +125,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return { 
-    position: state.position,
+    position: state.position.currentPosition,
     graph: state.graph 
   };
 }
@@ -133,6 +137,9 @@ const mapDispatchToProps = dispatch => {
     },
     movePosition: pos => {
       dispatch(movePosition(pos));
+    },
+    backPosition: () => {
+      dispatch(backPosition());
     }
   }
 }

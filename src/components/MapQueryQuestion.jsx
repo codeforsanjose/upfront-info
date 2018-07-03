@@ -174,8 +174,8 @@ const mapStateToProps = state => {
     point: state.map.point,
     address: state.map.address,
     addressName: state.map.name, 
-    position: state.position,
-    forwardPositions: state.graph.adjancey[state.position]
+    position: state.position.currentPosition,
+    forwardPositions: state.graph.adjancey[state.position.currentPosition]
   };
 };
 

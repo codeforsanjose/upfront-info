@@ -69,8 +69,8 @@ const mapStateToProps = state => {
     permitTable: state.lookup.permitTable,
     businessType: state.form.wizard.values.businessType.toLowerCase(), // this should be indexed way before
     zoningAbbreviation: state.map.zoningAbbreviation,
-    position: state.position,
-    forwardPositions: state.graph.adjancey[state.position]
+    position: state.position.currentPosition,
+    forwardPositions: state.graph.adjancey[state.position.currentPosition]
   }
 };
 

@@ -16,8 +16,8 @@ const mapStateToProps = state => {
   return {
     zoningAbbreviation: state.map.zoningAbbreviation,
     zoningDescription: state.map.zoningDescription,
-    position: state.position,
-    forwardPositions: state.graph.adjancey[state.position]
+    position: state.position.currentPosition,
+    forwardPositions: state.graph.adjancey[state.position.currentPosition]
   }
 };
 

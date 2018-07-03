@@ -55,10 +55,10 @@ function SingleStatement({handleSubmit, heading, position, forwardPositions, add
 
 const mapStateToProps = state => {
   return {
-    position: state.position,
+    position: state.position.currentPosition,
     businessType: state.form.wizard.values.businessType,
     address: state.map.address,
-    forwardPositions: state.graph.adjancey[state.position],
+    forwardPositions: state.graph.adjancey[state.position.currentPosition],
     zoningAbbreviation: state.map.zoningAbbreviation,
     zoningDescription: state.map.zoningDescription,
     businessAddress: state.map.address,
