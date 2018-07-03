@@ -115,7 +115,16 @@ class App extends Component {
         </section>
         <main>
           <div className="container">
-              { question }
+            {
+              position !== '1'
+              &&
+              <div className="navigation">
+                <button type="button" onClick={this.backNode}>
+                  Back
+                </button>
+              </div>
+            }
+            { question }
           </div>
         </main>
       </div>
