@@ -9,11 +9,12 @@ const positionReducer = (state = initialState, action) => {
       if (action.payload !== '5') {
         state.history.push(action.payload)
       }
-      return Object.assign({}, state, { currentPosition: action.payload, history: state.history });
-      break;
+      state.currentPosition = action.payload;
+      return state;
     case BACK_POSITION:
       state.history.pop();
-      return Object.assign({}, state, { currentPosition: state.history.slice(-1)[0], history: state.history });
+      state.currentPosition = state.history.slice(-1)[0];
+      return state;
     default:
       return state;
   }
