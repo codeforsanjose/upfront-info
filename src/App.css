@@ -29,6 +29,23 @@
   font-size: 1.5em;
 }
 
+/* Address Form */
+
+.address-form {
+  overflow: hidden; 
+}
+
+.address-form .card {
+  width: 50%;
+  float: left;
+}
+
+.address-form .card:nth-of-type(1) {
+  height: 480px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
 .card {
   background: white;
   border: 1px solid #dedede;

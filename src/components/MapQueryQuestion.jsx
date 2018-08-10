@@ -125,16 +125,6 @@ class MapQueryQuestion extends Component {
             <h3>{ question }</h3>
             <div id='geocoder-container'></div>
           </div>
-        </div>
-        <div className="card card--no-paddding">
-          <div id='map-container'
-              style={
-              {
-                'display': 'flex',
-                'flexAlign': 'center',
-                'height': '300px'
-              }
-            }></div>
           <div className="card__body">
             <div className="address-form__results">
               <table>
@@ -156,11 +146,21 @@ class MapQueryQuestion extends Component {
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> 
           <form onSubmit={(e) => {handleSubmit(forwardPositions[0], e)}}>
             <Field name='businessAddress' component='hidden'></Field>
             <button>Next</button>
-          </form>
+          </form>                   
+        </div>
+        <div className="card card--no-paddding">
+          <div id='map-container'
+              style={
+              {
+                'display': 'flex',
+                'flexAlign': 'center',
+                'height': '480px'
+              }
+            }></div>
         </div>
       </div>
     );
