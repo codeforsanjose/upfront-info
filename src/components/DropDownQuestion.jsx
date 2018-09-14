@@ -22,8 +22,8 @@ function DropDownQuestion(props) {
 
 const mapStateToProps = state => {
   return {
-    position: state.position,
-    forwardPositions: state.graph.adjancey[state.position]
+    position: state.position.currentPosition,
+    forwardPositions: state.graph.adjancey[state.position.currentPosition]
   };
 };
 
