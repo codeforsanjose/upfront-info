@@ -152,7 +152,7 @@ class MapQueryQuestion extends Component {
             <button>Next</button>
           </form>                   
         </div>
-        <div className="card card--no-paddding">
+        <div className="card card--no-padding">
           <div id='map-container'
               style={
               {
