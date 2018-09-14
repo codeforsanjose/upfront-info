@@ -1,4 +1,3 @@
-
 .App {
   text-align: center;
 }
@@ -6,6 +5,30 @@
 .App p {
   font-size: 20px;
 }
+
+main {
+  padding-top: 2em;
+  height: 100%;
+}
+
+/* Buttons */
+
+main .button {
+  background: #5bb6e2;
+  border: 0.1rem solid #4ba6d2;
+}
+
+.App button {
+  background-color: #4d96ca;
+  border: 0.1rem solid #4d90ca;
+}
+
+.App select:focus {
+  border-color: #9c9c9c;
+  background-image: url(data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14"…h fill="#9b4dca" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>);
+}
+
+/* Headers */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -46,6 +69,16 @@
   box-sizing: border-box;
 }
 
+.address-form__field {
+  margin: 0 auto 20px;
+  width: 100%;
+}
+
+.address-form .mapboxgl-ctrl-geocoder {
+  width: 100%;
+  max-width: initial;
+}
+
 .card {
   background: white;
   border: 1px solid #dedede;
@@ -64,7 +97,7 @@
   padding-bottom: 18px;
 }
 
-.card--no-paddding {
+.card--no-padding {
   padding: 0;
 }
 
@@ -82,25 +115,13 @@
   background-color: white;
 }
 
-main {
-  padding-top: 2em;
-  height: 100%;
-}
-
-main .button {
-  background: #5bb6e2;
-  border: 0.1rem solid #4ba6d2;
+.question-form, .question-input {
+  width: 30%;
+  margin: 0 auto;
 }
 
 .question-input {
-  width: 30%;
-  margin: 0 auto;
   display: block;
-}
-
-.question-form {
-  width: 30%;
-  margin: 0 auto;
 }
 
 .question-form input,
@@ -108,30 +129,12 @@ main .button {
   width: 100%;
 }
 
-.address-form__field {
-  margin: 0 auto 20px;
-  width: 100%;
-}
-
-.address-form .mapboxgl-ctrl-geocoder {
-  width: 100%;
-  max-width: initial;
-}
-
-.App button {
-  background-color: #4d96ca;
-  border: 0.1rem solid #4d90ca;
-}
-
-.App select:focus {
-  border-color: #9c9c9c;
-  background-image: url(data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14"…h fill="#9b4dca" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>);
-}
 .mapboxgl-ctrl-geocoder input[type='text'] {
   height: 50px !important;
   font-size: 16px;
 }
 
+/* Display results*/
 .results__main {
   text-align: left;
 }
